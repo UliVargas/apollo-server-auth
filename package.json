@@ -1,0 +1,39 @@
+{
+  "name": "apollo-server-auth",
+  "version": "1.0.0",
+  "description": "This is a simple example of how to use Apollo Server with authentication.",
+  "main": "index.js",
+  "scripts": {
+    "generate": "graphql-codegen --config codegen.yml",
+    "compile": "tsc",
+    "dev": "npm run generate && nodemon ./src/index.ts",
+    "start": "npm run compile && node ./dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^4.10.4",
+    "@apollo/subgraph": "^2.7.6",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.19.2",
+    "express4": "link:@apollo/server/express4",
+    "graphql": "^16.8.1",
+    "graphql-tag": "^2.12.6",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "5.0.2",
+    "@graphql-codegen/typescript": "4.0.6",
+    "@graphql-codegen/typescript-resolvers": "4.0.6",
+    "@types/cookie-parser": "^1.4.7",
+    "@types/express": "^4.17.21",
+    "@types/express-session": "^1.18.0",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^20.12.8",
+    "express-session": "^1.18.0",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
