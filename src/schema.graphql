@@ -14,10 +14,22 @@ type Login {
   message: String
 }
 
+type Session {
+  sessionId: Int
+  user: User
+}
+
+type User {
+  name: String
+  email: String
+  role: String
+}
+
 # The "Query" type is special: it lists all of the available queries that
 # clients can execute, along with the return type for each. In this
 # case, the "books" query returns an array of zero or more Books (defined above).
 type Query {
   books: [Book]
   login: Login
+  getSession: Session
 }

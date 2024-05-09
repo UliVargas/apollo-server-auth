@@ -7,7 +7,7 @@ export const authMiddleware = (
   const session = req.session;
   const operationList = ["IntrospectionQuery", "Login", "Register"];
 
-  if (!session.userId && !operationList.includes(req.body.operationName)) {
+  if (!session.sessionId && !operationList.includes(req.body.operationName)) {
     throw new GraphQLError("Unauthorized", {
       extensions: {
         code: "UNAUTHORIZED",

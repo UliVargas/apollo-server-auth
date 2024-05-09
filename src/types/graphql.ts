@@ -30,7 +30,21 @@ export type Login = {
 export type Query = {
   __typename?: 'Query';
   books?: Maybe<Array<Maybe<Book>>>;
+  getSession?: Maybe<Session>;
   login?: Maybe<Login>;
+};
+
+export type Session = {
+  __typename?: 'Session';
+  sessionId?: Maybe<Scalars['Int']['output']>;
+  user?: Maybe<User>;
+};
+
+export type User = {
+  __typename?: 'User';
+  email?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  role?: Maybe<Scalars['String']['output']>;
 };
 
 export type WithIndex<TObject> = TObject & Record<string, any>;
@@ -107,18 +121,24 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = ResolversObject<{
   Book: ResolverTypeWrapper<Book>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
+  Int: ResolverTypeWrapper<Scalars['Int']['output']>;
   Login: ResolverTypeWrapper<Login>;
   Query: ResolverTypeWrapper<{}>;
+  Session: ResolverTypeWrapper<Session>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
+  User: ResolverTypeWrapper<User>;
 }>;
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = ResolversObject<{
   Book: Book;
   Boolean: Scalars['Boolean']['output'];
+  Int: Scalars['Int']['output'];
   Login: Login;
   Query: {};
+  Session: Session;
   String: Scalars['String']['output'];
+  User: User;
 }>;
 
 export type BookResolvers<ContextType = MyContext, ParentType extends ResolversParentTypes['Book'] = ResolversParentTypes['Book']> = ResolversObject<{
@@ -134,12 +154,28 @@ export type LoginResolvers<ContextType = MyContext, ParentType extends Resolvers
 
 export type QueryResolvers<ContextType = MyContext, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
   books?: Resolver<Maybe<Array<Maybe<ResolversTypes['Book']>>>, ParentType, ContextType>;
+  getSession?: Resolver<Maybe<ResolversTypes['Session']>, ParentType, ContextType>;
   login?: Resolver<Maybe<ResolversTypes['Login']>, ParentType, ContextType>;
+}>;
+
+export type SessionResolvers<ContextType = MyContext, ParentType extends ResolversParentTypes['Session'] = ResolversParentTypes['Session']> = ResolversObject<{
+  sessionId?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  user?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type UserResolvers<ContextType = MyContext, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = ResolversObject<{
+  email?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  role?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
 export type Resolvers<ContextType = MyContext> = ResolversObject<{
   Book?: BookResolvers<ContextType>;
   Login?: LoginResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  Session?: SessionResolvers<ContextType>;
+  User?: UserResolvers<ContextType>;
 }>;
 

@@ -13,12 +13,11 @@ import gql from "graphql-tag";
 
 // Local imports
 import { resolvers } from "./resolvers";
-import { Book, Login } from "./types/graphql";
+import { Book, Login, Session } from "./types/graphql";
 import { authMiddleware } from "./middleware/auth.middleware";
 
 // Node imports
 import { readFileSync } from "fs";
-
 
 const app = express();
 const httpServer = http.createServer(app);
@@ -49,7 +48,7 @@ const main = async () => {
 
   app.use(
     session({
-      name: "auth_session_video_denuncia",
+      name: "josue_session",
       secret: "tu_super_secreto",
       resave: true,
       saveUninitialized: true,
@@ -89,7 +88,7 @@ const main = async () => {
             ],
             login: {
               message: "You are logged in",
-            },
+            }
           },
         };
       },

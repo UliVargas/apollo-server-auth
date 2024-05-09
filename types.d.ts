@@ -1,7 +1,15 @@
-import session from 'express-session';
+import 'express-session';
+
+interface User {
+  id: number;
+  email: string;
+  role: string;
+  name: string;
+}
 
 declare module 'express-session' {
   interface Session {
-    userId?: string;
+    sessionId?: number;
+    user: User
   }
 }
